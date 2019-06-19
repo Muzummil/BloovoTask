@@ -1,0 +1,81 @@
+
+<div *ngIf="showBlogDetails" >
+  <div class="jumbotron mt-0 py-5">
+    <div class="container text-left">
+        <h5 class="text-truncate">{{blogDetails.title}}</h5>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="d-flex align-items-center">
+                <img class="rounded-circle placeholder-img" src={{blogDetails.avatar}} alt="">
+                <div class="ml-2 mt-2 d-flex flex-column justify-content-center">
+                    <p class="text-info m-0">{{blogDetails.name}}</p>
+                    <p class="small text-secondary">{{blogDetails.createdAt | date}}</p>
+                </div>
+            </div>
+            <div>
+                <button (click)="likeBlog(blogDetails.likes,blogDetails.id)" class="btn btn-outline-success btn-sm" type="button">
+                  {{blogDetails.likes}}<i class="fa fa-heart"></i>
+                </button>
+                <button (click)="unlikeBlog(blogDetails.likes,blogDetails.id)"  class="btn btn-outline-success btn-sm" type="button">
+                  <i class="fa fa-thumbs-down"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p class="text-secondary">{{blogDetails.description}}</p>
+        </div>
+    </div>
+    <div class="row mt-5 border-top pt-4">
+        <div class="col">
+          <h5 class="display-5 comment-text">Comments</h5>
+          <button type="button" class="btn btn-primary comment-btn" (click)="showNewComment='true'" >Post comment?</button>
+        </div>
+    </div>
+
+    <div *ngIf="showNewComment">
+      <div class="row">
+        <div class="col-6 offset-3">
+          <textarea [(ngModel)]="comment" class="comment-textarea"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 offset-3">
+          <button type="button" class="btn btn-primary" (click)="postComment(blogDetails.id,blogDetails.comments)" >Comment</button>        
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="blogDetails.comments.length>0">
+      <div *ngFor="let comment of blogDetails.comments"   class="row mt-3 mb-5">
+          <div class="col">
+              <div class="media">
+                  <img src={{comment.person_avatar}} class="mr-3 placeholder-img">
+                  <div class="media-body">
+                      <h5 class="mt-0 comment-text">{{comment.person_name}}</h5>
+                      {{comment.comment}}
+                      <button type="button" class="btn btn-danger comment-btn" 
+                      (click)="removeComment(blogDetails.comments,comment,blogDetails.id)" >Remove comment</button>
+
+
+                      <div *ngIf="comment.more_comments.length>0">
+                        <div *ngFor="let moreComments of comment.more_comments" class="media mt-3">
+                            <a class="mr-3" href="#">
+                                <img src={{moreComments.person_avatar}} class="mr-3 placeholder-img">
+                            </a>
+                            <div class="media-body">
+                                <h5 class="mt-0">{{moreComments.person_name}}</h5>
+                                {{moreComments.comment}}
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

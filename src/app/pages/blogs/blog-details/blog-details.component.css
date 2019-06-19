@@ -1,0 +1,9 @@
+.comment-btn{
+    float: right;
+}
+.comment-text{
+    float: left;
+}
+.comment-textarea{
+    width: 100%;
+}

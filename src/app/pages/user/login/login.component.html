@@ -1,0 +1,31 @@
+<!-- <input type="email" [(ngModel)]="email" placeholder="Email">
+<input type="password" [(ngModel)]="password" placeholder="Password">
+<editor apiKey="test" [init]="{plugins: 'link'}"></editor>
+
+<button (click)="login()">Login</button> -->
+
+
+<div class="container mt-4">
+    <div class="row align-items-center flex-column">
+        <div class="text-center">
+            <h3 class="display-5">Sign In</h3>
+            <p class="small"><a href="./signup.html" class="text-decoration-none">Don't have an account?</a></p>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-width">
+            <input class="form-control" formControlName="email" type="email" placeholder="Email Address">
+            <div *ngIf="submitted && f.email.errors" class="invalid-input">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Please enter a valid email</div>
+            </div>
+            <input class="form-control mt-3" formControlName="password" type="password" placeholder="Password">
+            <div *ngIf="submitted && f.password.errors" class="invalid-input">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+            <div class="mt-3 text-center">
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-danger" type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
