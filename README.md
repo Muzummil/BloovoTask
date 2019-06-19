@@ -1,3 +1,5 @@
+Assumptions:
+            1-The api structure is bit different from my desired one because the mockapi.io was asking for paid subscription for internal relationships so I went for basic one. Despite this all the functionalities are completed.
 # BloovoTask
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
