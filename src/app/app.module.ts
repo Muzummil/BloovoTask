@@ -4,11 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxLoadingModule } from 'ngx-loading';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 
 import { AuthService } from './services/user/auth/auth.service';
 import { SharedModule } from './common/shared.module';
 import { UserService } from './services/user/user-actions/user.service';
 import { BlogService } from './services/user/blog/blog.service';
+import { LoaderService } from './services/loader.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +21,16 @@ import { BlogService } from './services/user/blog/blog.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NgxLoadingModule.forRoot({}),
   ],
   providers: [
     AuthService,
     SharedModule,
     UserService,
-    BlogService
+    BlogService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })

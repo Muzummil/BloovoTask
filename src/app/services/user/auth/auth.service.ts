@@ -12,9 +12,9 @@ export class AuthService {
   baseUrl: string = this.shared.getBaseUrl();
 
   login(loginPayload): Observable<any> {
-   return this.http.get(this.baseUrl + 'users/' + loginPayload.email);
+   return this.http.get(this.baseUrl + 'users/' + loginPayload.id);
   }
-  signup(signupPayload, id): Observable<any> {
-   return this.http.post(this.baseUrl + 'users/' + id, signupPayload);
+  signup(signupPayload): Observable<any> {
+   return this.http.post(this.baseUrl + 'users', signupPayload);
   }
 }

@@ -9,7 +9,7 @@
     <div class="row align-items-center flex-column">
         <div class="text-center">
             <h3 class="display-5">Sign In</h3>
-            <p class="small"><a href="./signup.html" class="text-decoration-none">Don't have an account?</a></p>
+            <p class="small"><a [routerLink]="['/user/signup']"  routerLinkActive="router-link-active"  class="text-decoration-none">Don't have an account?</a></p>
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-width">
             <input class="form-control" formControlName="email" type="email" placeholder="Email Address">

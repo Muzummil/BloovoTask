@@ -17,7 +17,8 @@ export class SharedModule {
   public isUserLoggedIn():boolean{
     let email   = this.storageService.getDataByIndex("email");
     let name   = this.storageService.getDataByIndex("name");
-    if((email || email!=undefined) && (name || name!=undefined)){
+    let id   = this.storageService.getDataByIndex("id");
+    if((email || email!=undefined) && (name || name!=undefined) && (id || id!=undefined)){
       return true;
     }
     else{
